@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Indicateursperformance_production {
+public class IndicateursPerformanceProduction {
     @Id
     private String Description;
   @ManyToOne
-    private AgentProduction agent_production;
+    private AgentProduction agentProduction;
 }

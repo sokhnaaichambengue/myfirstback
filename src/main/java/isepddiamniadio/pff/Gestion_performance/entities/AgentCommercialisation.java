@@ -36,9 +36,10 @@ public class AgentCommercialisation {
     private List<CompetenceAgentCommercialisation> competenceAgentCommercialisations;
     @OneToMany(mappedBy = "agentCommercialisation", cascade = CascadeType.ALL)
     private List<EvaluationPerformanceAgentComm> EvaluationPerformanceAgentCommercialisations;
+    @OneToMany(mappedBy = "agentCommercialisation", cascade = CascadeType.ALL)
+    private List<IndicateursPerformanceComm> IndicateursPerformanceCommercialisations;
 
-    private String justification;  // Justification de l'agent (si nécessaire)
-    private boolean isValidated;
+
 
 
 

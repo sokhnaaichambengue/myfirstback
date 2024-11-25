@@ -36,6 +36,9 @@ public class AgentGcf {
     private List<CompetenceAgentGcf> competenceAgentGcfs;
     @OneToMany(mappedBy = "agentGcf", cascade = CascadeType.ALL)
     private List<EvaluationAgentGcf> evaluationAgentGcfs;
+    @OneToMany(mappedBy = "agentGcf", cascade = CascadeType.ALL)
+    private List<IndicateurPerformanceGcf> indicateurPerformanceGcfs;
+
 
 
 

@@ -22,6 +22,8 @@ public class AgentCommercialisationService {
 
     @Autowired
     private EvaluationPerformanceAgentCommRepository evaluationPerformanceAgentCommRepository;
+    @Autowired
+    private IndicateursPerformanceCommRepository indicateursPerformanceCommRepository;
 
     // Ajouter un agent de commercialisation avec ses objectifs, missions, hiérarchies et compétences
     @Transactional
@@ -61,6 +63,14 @@ public class AgentCommercialisationService {
                 evaluation.setAgentCommercialisation(agentCommercialisation);
                 evaluationPerformanceAgentCommRepository.save(evaluation);
             }
+
+        }
+        if (agentCommercialisation.getIndicateursPerformanceCommercialisations()!= null) {
+            for (IndicateursPerformanceComm indicateursPerformanceComm : agentCommercialisation.getIndicateursPerformanceCommercialisations()) {
+                indicateursPerformanceComm.setAgentCommercialisation(agentCommercialisation);
+                indicateursPerformanceCommRepository.save(indicateursPerformanceComm);
+            }
+
         }
     }
 
@@ -124,6 +134,9 @@ public class AgentCommercialisationService {
         }
         if (agentCommercialisation.getEvaluationPerformanceAgentCommercialisations() != null) {
             evaluationPerformanceAgentCommRepository.deleteAll(agentCommercialisation.getEvaluationPerformanceAgentCommercialisations());
+        }
+        if (agentCommercialisation.getIndicateursPerformanceCommercialisations()!= null) {
+          indicateursPerformanceCommRepository.deleteAll(agentCommercialisation.getIndicateursPerformanceCommercialisations());
         }
     }
 

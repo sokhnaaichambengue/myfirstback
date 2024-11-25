@@ -30,6 +30,9 @@ public class AgentGcfService {
     private CompetenceAgentGcfRepository competenceAgentGcfRepository;
     @Autowired
     private EvaluationAgentGcfRepository evaluationAgentGcfRepository;
+    @Autowired
+    private IndicateurPerformanceGcfRepository indicateurPerformanceGcfRepository;
+
 
     // Ajouter un agent de commercialisation avec ses objectifs, missions, hiérarchies et compétences
     @Transactional
@@ -84,6 +87,12 @@ public class AgentGcfService {
             for (CompetenceAgentGcf competenceAgentGcf : agentGcf.getCompetenceAgentGcfs()) {
                competenceAgentGcf.setAgentGcf(agentGcf);
                competenceAgentGcfRepository.save(competenceAgentGcf);
+            }
+        }
+        if (agentGcf.getIndicateurPerformanceGcfs()!= null) {
+            for (IndicateurPerformanceGcf indicateurPerformanceGcf: agentGcf.getIndicateurPerformanceGcfs()) {
+               indicateurPerformanceGcf.setAgentGcf(agentGcf);
+               indicateurPerformanceGcfRepository.save(indicateurPerformanceGcf);
             }
         }
         if (agentGcf.getEvaluationAgentGcfs() != null) {
@@ -163,6 +172,10 @@ public class AgentGcfService {
         }
         if (agentGcf.getEvaluationAgentGcfs()!= null) {
            evaluationAgentGcfRepository.deleteAll(agentGcf.getEvaluationAgentGcfs());
+        }
+
+        if (agentGcf.getIndicateurPerformanceGcfs()!= null) {
+        indicateurPerformanceGcfRepository.deleteAll(agentGcf.getIndicateurPerformanceGcfs());
         }
     }
 

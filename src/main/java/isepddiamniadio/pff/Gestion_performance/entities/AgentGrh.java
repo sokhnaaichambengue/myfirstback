@@ -35,5 +35,6 @@ public class AgentGrh {
     private List<IndicateursdePerformanceGrh> indicateursdePerformanceGrhs;
     @OneToMany(mappedBy = "agentGrh", cascade = CascadeType.ALL)
     private List<EvaluationAgentGrh> evaluationAgentGrhs;
+  
 
 }

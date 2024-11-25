@@ -22,7 +22,8 @@ public class AgentProductionService {
 
     @Autowired
     private EvaluationPerformanceAgentProdRepository evaluationPerformanceAgentProdRepository;
-
+    @Autowired
+    private IndicateursPerformanceProductionRepository indicateursPerformanceProductionRepository;
     // Ajouter un agent de production avec ses objectifs, missions, hiérarchies et compétences
     @Transactional
     public AgentProduction addAgent(AgentProduction agentProduction) {
@@ -60,6 +61,12 @@ public class AgentProductionService {
             for (EvaluationPerformanceAgentProduction evaluationPerformanceAgentProd : agentProduction.getEvaluationPerformanceAgentProductions()) {
                 evaluationPerformanceAgentProd.setAgentProduction(agentProduction);
                 evaluationPerformanceAgentProdRepository.save(evaluationPerformanceAgentProd);
+            }
+        }
+        if (agentProduction.getIndicateursperformanceProductions()!= null) {
+            for (IndicateursPerformanceProduction indicateursPerformanceProduction: agentProduction.getIndicateursperformanceProductions()) {
+        indicateursPerformanceProduction.setAgentProduction(agentProduction);
+               indicateursPerformanceProductionRepository.save(indicateursPerformanceProduction);
             }
         }
     }
@@ -124,6 +131,10 @@ public class AgentProductionService {
         }
         if (agentProduction.getEvaluationPerformanceAgentProductions() != null) {
             evaluationPerformanceAgentProdRepository.deleteAll(agentProduction.getEvaluationPerformanceAgentProductions());
+        }
+
+        if (agentProduction.getIndicateursperformanceProductions()!= null) {
+            indicateursPerformanceProductionRepository.deleteAll(agentProduction.getIndicateursperformanceProductions());
         }
     }
 

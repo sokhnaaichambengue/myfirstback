@@ -30,6 +30,8 @@ public class AgentAiService {
     private CompetenceAiRepository competenceAiRepository;
     @Autowired
     private EvaluationnPerformanceAiRepository evaluationnPerformanceAiRepository;
+    @Autowired
+    private IndicateurPerformanceAiRepository indicateurPerformanceAiRepository;
 
     // Ajouter un agent de commercialisation avec ses objectifs, missions, hiérarchies et compétences
     @Transactional
@@ -92,10 +94,18 @@ public class AgentAiService {
                 competenceAiRepository.save(competenceAi);
             }
         }
+
         if (agentAi.getEvaluationnPerformanceAis()!= null) {
             for (EvaluationnPerformanceAi evaluationnPerformanceAi : agentAi.getEvaluationnPerformanceAis()) {
                evaluationnPerformanceAi.setAgentAi(agentAi);
                evaluationnPerformanceAiRepository.save(evaluationnPerformanceAi);
+
+            }
+        }
+        if (agentAi.getIndicateurPerformanceAis()!= null) {
+            for (IndicateurPerformanceAi indicateurPerformanceAi : agentAi.getIndicateurPerformanceAis()) {
+               indicateurPerformanceAi.setAgentAi(agentAi);
+               indicateurPerformanceAiRepository.save(indicateurPerformanceAi);
 
             }
         }
@@ -170,6 +180,9 @@ public class AgentAiService {
         }
         if (agentAi.getEvaluationnPerformanceAis()!= null) {
           evaluationnPerformanceAiRepository.deleteAll(agentAi.getEvaluationnPerformanceAis());
+        }
+        if (agentAi.getIndicateurPerformanceAis()!= null) {
+           indicateurPerformanceAiRepository.deleteAll(agentAi.getIndicateurPerformanceAis());
         }
     }
 

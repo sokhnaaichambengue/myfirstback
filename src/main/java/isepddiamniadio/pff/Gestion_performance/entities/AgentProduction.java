@@ -36,8 +36,9 @@ public class AgentProduction {
 
     @OneToMany(mappedBy = "agentProduction", cascade = CascadeType.ALL)
     private List<EvaluationPerformanceAgentProduction> evaluationPerformanceAgentProductions;
+    @OneToMany(mappedBy = "agentProduction", cascade = CascadeType.ALL)
+    private List<IndicateursPerformanceProduction> indicateursperformanceProductions;
 
-    private String justification;
-    private boolean isValidated;
+
 }
 

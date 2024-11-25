@@ -27,6 +27,8 @@ public class AgentGRHService {
     private CompetenceGRHRepository competenceGRHRepository;
     @Autowired
     private EvaluationAgentGrhRepository evaluationAgentGRHRepository;
+    @Autowired
+    private IndicateursdePerformanceGrhRepository indicateursdePerformanceGrhRepository;
 
     // Ajouter un agent de commercialisation avec ses objectifs, missions et indicateurs
     public AgentGrh addAgent(AgentGrh agentGrh) {
@@ -76,6 +78,12 @@ public class AgentGRHService {
             for (CompetenceGrh competenceGRH : agentGrh.getCompetenceGrhs()) {
                 competenceGRH.setAgentGrh(agentGrh);
              competenceGRHRepository.save(competenceGRH);
+            }
+        }
+        if (agentGrh.getIndicateursdePerformanceGrhs()!= null) {
+            for (IndicateursdePerformanceGrh indicateursdePerformanceGrh : agentGrh.getIndicateursdePerformanceGrhs()) {
+                indicateursdePerformanceGrh.setAgentGrh(agentGrh);
+                indicateursdePerformanceGrhRepository.save(indicateursdePerformanceGrh);
             }
         }
         if (agentGrh.getEvaluationAgentGrhs()!= null) {
@@ -133,6 +141,7 @@ public class AgentGRHService {
             missionGRHRepository.deleteAll(agentGRH.getMissionGrhs());
            hierhieGrHRepository.deleteAll(agentGRH.getHierarchieGrhs());
           competenceGRHRepository.deleteAll(agentGRH.getCompetenceGrhs());
+          indicateursdePerformanceGrhRepository.deleteAll(agentGRH.getIndicateursdePerformanceGrhs());
           evaluationAgentGRHRepository.deleteAll(agentGRH.getEvaluationAgentGrhs());
 
             // Supprimer l'agent

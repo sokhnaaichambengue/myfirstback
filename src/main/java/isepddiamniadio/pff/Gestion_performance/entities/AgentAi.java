@@ -36,6 +36,8 @@ public class AgentAi {
     private List<CompetenceAi> competenceAis;
     @OneToMany(mappedBy = "agentAi", cascade = CascadeType.ALL)
     private List<EvaluationnPerformanceAi> evaluationnPerformanceAis;
+    @OneToMany(mappedBy = "agentAi", cascade = CascadeType.ALL)
+    private List<IndicateurPerformanceAi> indicateurPerformanceAis;
 
 
 
