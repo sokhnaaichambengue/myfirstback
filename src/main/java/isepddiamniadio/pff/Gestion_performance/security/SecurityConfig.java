@@ -28,6 +28,19 @@ public class SecurityConfig {
 
                     // Restricted access for Agent Commercialisation
                     authorizeRequests.requestMatchers("/api/agentcommercialisation").hasRole("AGENT_COMMERCIALISATION");
+                    authorizeRequests.requestMatchers("/api/agentproduction").hasRole("AGENT_PRODUCTION");
+                    authorizeRequests.requestMatchers("/api/agentai").hasRole("AGENT_AI");
+                    authorizeRequests.requestMatchers("/api/agentgcf").hasRole("AGENT_GCF");
+                    authorizeRequests.requestMatchers("/api/agentGrh").hasRole("AGENT_GRH");
+                    authorizeRequests.requestMatchers("/api/evaluationai").hasRole("EVALUATION_AI");
+                    authorizeRequests.requestMatchers("/api/evaluationcomm").hasRole("EVALUATION_COMM");
+                    authorizeRequests.requestMatchers("/api/evaluationgcf").hasRole("EVALUATION_GCF");
+                    authorizeRequests.requestMatchers("/api/evaluationgrh").hasRole("EVALUATION_GRH");
+                    authorizeRequests.requestMatchers("/api/evaluationprod").hasRole("EVALUATION_PROD");
+
+
+
+
 
                     // Other requests - requires authentication for other endpoints
                     authorizeRequests.anyRequest().authenticated();
